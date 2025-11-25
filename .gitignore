@@ -1,0 +1,13 @@
+# Игнорировать служебные файлы IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Игнорировать скомпилированные классы Java
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Игнорировать файлы операционной системы
+.DS_Store
+Thumbs.db
