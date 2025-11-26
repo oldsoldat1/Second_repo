@@ -2,6 +2,7 @@ package jm.task.core.jdbc.util;
 
 
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -14,7 +15,7 @@ public class Util {
         try {
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
-            throw new RuntimeException("Нет соединения к базе данных", e);
+            throw new RuntimeException("Нет соединения с базой данных", e);
         }
     }
 }
