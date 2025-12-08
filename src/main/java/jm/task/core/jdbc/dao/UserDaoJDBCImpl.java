@@ -34,7 +34,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     @Override
     public void dropUsersTable() {
-        String sql =   "DROP TABLE IF EXISTS users";
+        String sql =   "DROP TABLE IF EXISTS users";                    //удалить таблицу если она существует
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
@@ -44,7 +44,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
-        String sql = "INSERT INTO users (name, lastName, age) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO users (name, lastName, age) VALUES (?, ?, ?)";    //вставить в таблицу user параметризованные поля
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, name);
@@ -58,7 +58,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     @Override
     public void removeUserById(long id) {
-        String sql = "DELETE FROM users WHERE id = ?";
+        String sql = "DELETE FROM users WHERE id = ?";                      //удаление из таблицы строки с номером id
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setLong(1, id);
@@ -70,7 +70,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        String sql = "SELECT * FROM users";
+        String sql = "SELECT * FROM users";                 //выбрать и вывести все поля из таблицы users
         List<User> users = new ArrayList<>();
 
         try (Statement statement = connection.createStatement();
@@ -93,7 +93,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     @Override
     public void cleanUsersTable() {
-        String sql = "TRUNCATE TABLE users";
+        String sql = "TRUNCATE TABLE users";                //удаление таблицы с сохранением структуры
 
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
