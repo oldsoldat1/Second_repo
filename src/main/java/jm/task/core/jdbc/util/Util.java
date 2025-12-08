@@ -12,14 +12,12 @@ public class Util {
 
     public static Connection getConnection() {
 
-        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            System.out.println("Соединение с БД установлено");
-            return conn;
-
+        try {
+            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+                System.out.println("Соединение с БД установлено");
+                return conn;
         } catch (SQLException e) {
             throw new RuntimeException("Нет соединения с базой данных", e);
         }
-
-
     }
 }
