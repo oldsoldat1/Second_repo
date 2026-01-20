@@ -13,7 +13,7 @@ public class UserDaoJDBCImpl implements UserDao {
     private final Connection connection;
 
     public UserDaoJDBCImpl() {
-        this.connection = Util.getConnection();
+        this.connection = Util.getJDBCConnection();
     }
 
 
@@ -69,9 +69,9 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<model.User> getAllUsers() {
         String sql = "SELECT * FROM users";                 //выбрать и вывести все поля из таблицы users
-        List<User> users = new ArrayList<>();
+        List<model.User> users = new ArrayList<>();
 
         try (Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql)) {
