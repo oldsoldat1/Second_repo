@@ -1,24 +1,40 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.dao.UserDao;
-import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
-import jm.task.core.jdbc.util.Util;
+
+import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.service.UserService;
+import jm.task.core.jdbc.service.UserServiceImpl;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Util.getConnection();
-        UserDao userDao = new UserDaoJDBCImpl();
 
-        userDao.createUsersTable();
 
-        userDao.saveUser("Name1", "LastName1", (byte) 20);
-        userDao.saveUser("Name2", "LastName2", (byte) 25);
-        userDao.saveUser("Name3", "LastName3", (byte) 31);
-        userDao.saveUser("Name4", "LastName4", (byte) 38);
 
-        userDao.removeUserById(1);
-        userDao.getAllUsers();
-        userDao.cleanUsersTable();
-        userDao.dropUsersTable();
+        UserService userService = new UserServiceImpl();
+
+        try {
+           userService.createUsersTable();
+
+           userService.saveUser("Alex", "Sidorov", (byte) 35);
+           userService.saveUser("Alla", "Duhova", (byte) 23);
+           userService.saveUser("Ivan", "Popov", (byte) 31);
+           userService.saveUser("Elena", "Petrova", (byte) 15);
+
+           List<User> users = userService.getAllUsers();
+            System.out.println("Все пользователи из базы");
+            for (User user: users) {
+                System.out.println(user);
+            }
+
+            userService.cleanUsersTable();
+
+            userService.dropUsersTable();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

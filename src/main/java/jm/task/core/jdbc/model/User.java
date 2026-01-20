@@ -1,4 +1,4 @@
-package model;
+package jm.task.core.jdbc.model;
 
 import javax.persistence.*;
 

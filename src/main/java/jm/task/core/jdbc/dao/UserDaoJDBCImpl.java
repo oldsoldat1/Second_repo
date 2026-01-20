@@ -69,9 +69,9 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     @Override
-    public List<model.User> getAllUsers() {
+    public List<User> getAllUsers() {
         String sql = "SELECT * FROM users";                 //выбрать и вывести все поля из таблицы users
-        List<model.User> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
 
         try (Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql)) {
