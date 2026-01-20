@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class Util {
     // JDBC параметры
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/my_db?useSSL=false&serverTimezone=UTC";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/my_database?useSSL=false&serverTimezone=UTC";
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD = "root"; // замените на свой пароль
 
@@ -44,7 +44,7 @@ public class Util {
             configuration.setProperty("hibernate.format_sql", "true");
 
             // Стратегия создания таблиц
-            configuration.setProperty("hibernate.hbm2ddl.auto", "validate");
+            configuration.setProperty("hibernate.hbm2ddl.auto", "none");
 
             // Добавляем класс User
             configuration.addAnnotatedClass(User.class);
